@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1100px 600px at 100% -5%, rgba(84, 192, 230, 0.07), transparent 60%),
+    radial-gradient(900px 500px at -5% 110%, rgba(79, 195, 217, 0.05), transparent 55%),
+    #0c1220;
+  color: #e7ecf6;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background: #283450;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*:focus-visible {
+  outline: 2px solid #54c0e6;
+  outline-offset: 2px;
+}
+
+/* ---- animations ---- */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fade {
+  animation: fade 0.25s ease;
+}
+
+@keyframes pingSoft {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.animate-ping-soft {
+  animation: pingSoft 1.8s ease-out infinite;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- reusable component classes ---- */
+@layer components {
+  .side-grad {
+    background: linear-gradient(180deg, #0f1726, #0c1220);
+  }
+
+  .card {
+    @apply border border-line rounded-[14px] p-[18px] relative overflow-hidden;
+    background: linear-gradient(180deg, #141d30, #0f1726);
+  }
+
+  /* form controls */
+  .fld {
+    @apply bg-panel border border-line rounded-[9px] text-txt font-body text-[13px] px-[11px] py-[9px] outline-none transition w-full min-w-0;
+  }
+  .fld:focus {
+    @apply border-accent;
+    box-shadow: 0 0 0 3px rgba(84, 192, 230, 0.14);
+  }
+  select.fld {
+    @apply cursor-pointer;
+  }
+  .lbl-cap {
+    @apply block text-[10px] tracking-[0.6px] uppercase text-txt3 mb-[5px] ml-0.5;
+  }
+
+  /* buttons */
+  .btn-primary {
+    @apply bg-accent text-[#08111f] border-0 rounded-[9px] px-[14px] py-[9px] font-body font-semibold text-[13px] cursor-pointer transition inline-flex items-center justify-center gap-[7px] hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply bg-transparent border border-line text-txt rounded-[9px] px-[14px] py-[9px] font-body font-semibold text-[13px] cursor-pointer transition inline-flex items-center gap-[7px] hover:border-accent hover:text-accent;
+  }
+  .btn-danger {
+    @apply bg-transparent border border-err text-err rounded-[9px] px-[14px] py-[9px] font-body font-semibold text-[13px] cursor-pointer transition inline-flex items-center gap-[7px];
+  }
+  .btn-danger:hover {
+    background: rgba(242, 112, 107, 0.1);
+  }
+  .btn-sm {
+    @apply px-[11px] py-[7px] text-[12px];
+  }
+  .icon-btn {
+    @apply bg-transparent border border-line rounded-[8px] w-8 h-8 grid place-items-center cursor-pointer text-txt2 transition hover:border-accent hover:text-accent flex-none;
+  }
+
+  /* tables */
+  .tbl-wrap {
+    @apply border border-line rounded-[14px] overflow-hidden bg-bg2;
+  }
+  .th {
+    @apply text-left text-[10.5px] tracking-[0.7px] uppercase text-txt3 font-semibold px-4 py-3 bg-panel border-b border-line whitespace-nowrap;
+  }
+  .td {
+    @apply px-4 py-3 border-b border-lineSoft text-txt align-middle;
+  }
+  .mono {
+    @apply font-mono text-[12.5px];
+  }
+  .muted {
+    @apply text-txt2;
+  }
+  .empty-row {
+    @apply p-[34px] text-center text-txt3 text-[13px];
+  }
+
+  /* panel header */
+  .panel-h {
+    @apply flex items-center gap-2.5 mb-3.5 flex-wrap;
+  }
+  .panel-h h3 {
+    @apply font-disp text-[15px] font-semibold;
+  }
+}
