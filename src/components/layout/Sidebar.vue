@@ -100,7 +100,7 @@ function logout() {
       >
         <a
           :href="n.to"
-          @click="navigate(); closeSidebar()"
+          @click="navigate($event); closeSidebar()"
           class="group flex items-center gap-[11px] px-3 py-2.5 rounded-[9px] font-medium text-[13.5px] border-l-[2.5px] transition cursor-pointer"
           :class="
             isActive
